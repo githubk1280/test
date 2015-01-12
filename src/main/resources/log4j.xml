@@ -10,7 +10,7 @@
 
 	<appender name="dailyFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
 		<!-- <param name="Threshold" value="INFO" /> -->
-		<param name="File" value="D:/test/avatar.log" />
+		<param name="File" value="/root/applogs/avatar.log" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="[test-dailyFileAppender]%d %-5p [%c] %m%n" />
 		</layout>
@@ -18,13 +18,13 @@
 
 	<appender name="ibatisAppender" class="org.apache.log4j.DailyRollingFileAppender">
 		<!-- <param name="Threshold" value="DEBUG" /> -->
-		<param name="File" value="D:/test/ibatis.log" />
+		<param name="File" value="/root/applogs/ibatis.log" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="[test-ibatisAppender]%d %-5p [%c] %m%n" />
 		</layout>
 	</appender>
 
-	<logger name="com.health" additivity="false">
+	<logger name="com.yx" additivity="false">
 		<appender-ref ref="CONSOLE" />
 		<appender-ref ref="dailyFileAppender" />
 	</logger>

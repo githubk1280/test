@@ -32,4 +32,5 @@ http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 	<!-- <import resource="spring-db.xml" /> -->
 	<!-- <import resource="spring-mybatis.xml" /> -->
 	<!-- <import resource="spring-taskexecutor.xml" /> -->
+	<import resource="spring-marshaller.xml" />
 </beans>

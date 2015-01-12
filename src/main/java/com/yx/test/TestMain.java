@@ -1,8 +1,9 @@
-package com.yx.controller;
+package com.yx.test;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 
 public class TestMain {
 
@@ -11,6 +12,7 @@ public class TestMain {
 		System.out.println(t.encrypt("91497008714207883858677187056457220083",
 				"SHA-1"));
 		System.out.println("ffc72bd2203b7eeaaa2dbfc45d6ddce2fab9bd65");
+		System.out.println(new Date ().getTime());
 	}
 
 	public String encrypt(String message, String type) {
