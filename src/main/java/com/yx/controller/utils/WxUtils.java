@@ -63,8 +63,7 @@ public class WxUtils {
 			InputStream body = entity.getContent();
 			byte[] bytes = new byte[BYTE_SIZE];
 			StringBuilder bodySb = new StringBuilder();
-			int read = 0;
-			while ((read = body.read(bytes, 0, body.available())) != -1) {
+			while ((body.read(bytes, 0, body.available())) != -1) {
 				bodySb.append(new String(bytes));
 			}
 			logger.info("response :" + bodySb.toString().trim());
@@ -84,9 +83,9 @@ public class WxUtils {
 		return accessToke;
 	}
 
-	public static void main(String args[]) throws IOException {
-		WxUtils u = new WxUtils();
-		u.init();
-		u.getAccessToken();
-	}
+	// public static void main(String args[]) throws IOException {
+	// WxUtils u = new WxUtils();
+	// u.init();
+	// u.getAccessToken();
+	// }
 }
