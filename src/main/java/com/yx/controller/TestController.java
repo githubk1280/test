@@ -1,14 +1,12 @@
 package com.yx.controller;
 
-import java.util.Iterator;
-import java.util.Map.Entry;
 import java.util.Properties;
-import java.util.Set;
 
 import javax.annotation.PostConstruct;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yx.utils.SystemUtils;
 
@@ -35,5 +33,10 @@ public class TestController {
 		// // System.out.println();
 		// logger.info(it.next());
 		// }
+	}
+
+	@RequestMapping("/yx/test")
+	public void testConnect() {
+		logger.info("this is a test");
 	}
 }

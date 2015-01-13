@@ -28,20 +28,26 @@
 		<param name="hostname" value="115.29.166.179" />
 		<param name="port" value="27017" />
 		<param name="databaseName" value="test" />
-		<param name="collectionName" value="log" />
+		<param name="collectionName" value="apolloLog" />
 		<!-- <param name="userName" value="" /> -->
 		<!-- <param name="password" value="" /> -->
 	</appender>
 
+	<appender name="asynAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="bufferSize" value="10000" />
+		<appender-ref ref="mongoDBAppender" />
+	</appender>
+
 	<logger name="com.yx" additivity="false">
-		<level value="DEBUG" />
+		<level value="INFO" />
 		<appender-ref ref="yxAppender" />
+		<appender-ref ref="asynAppender" />
 		<appender-ref ref="CONSOLE" />
 	</logger>
 
 	<logger name="com.xyx" additivity="false">
 		<level value="DEBUG" />
-		<appender-ref ref="mongoDBAppender" />
+		<appender-ref ref="asynAppender" />
 		<appender-ref ref="CONSOLE" />
 	</logger>
 
