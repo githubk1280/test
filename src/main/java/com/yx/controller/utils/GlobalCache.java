@@ -18,7 +18,7 @@ public class GlobalCache {
 
 	@PostConstruct
 	public void init() {
-		globalCache.put(GlobalConfig.accessToken, utils.getAccessToken());
+		// globalCache.put(GlobalConfig.accessToken, utils.getAccessToken());
 	}
 
 	public Object getValue(String key) {

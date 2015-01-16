@@ -4,56 +4,58 @@
 	threshold="null" debug="null">
 	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="[test]%d %-5p [%c] %m%n" />
+			<param name="ConversionPattern" value="[test-console]%d %-5p [%c] %m%n" />
 		</layout>
 	</appender>
 
 	<appender name="dailyFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
 		<!-- <param name="Threshold" value="INFO" /> -->
-		<param name="File" value="/root/applogs/avatar.log" />
+		<param name="File" value="${LOG4JDIR}/app.log" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="[test-dailyFileAppender]%d %-5p [%c] %m%n" />
 		</layout>
 	</appender>
 
-	<appender name="ibatisAppender" class="org.apache.log4j.DailyRollingFileAppender">
+	<appender name="yxAppender" class="org.apache.log4j.DailyRollingFileAppender">
 		<!-- <param name="Threshold" value="DEBUG" /> -->
-		<param name="File" value="/root/applogs/ibatis.log" />
+		<param name="File" value="${LOG4JDIR}/yx.log" />
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="[test-ibatisAppender]%d %-5p [%c] %m%n" />
+			<param name="ConversionPattern" value="[test-yxAppender]%d %-5p [%c] %m%n" />
 		</layout>
 	</appender>
 
+	<appender name="mongoDBAppender" class="org.log4mongo.MongoDbAppender">
+		<param name="hostname" value="115.29.166.179" />
+		<param name="port" value="27017" />
+		<param name="databaseName" value="test" />
+		<param name="collectionName" value="apolloLog" />
+		<!-- <param name="userName" value="" /> -->
+		<!-- <param name="password" value="" /> -->
+	</appender>
+
+	<appender name="asynAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="bufferSize" value="10000" />
+		<appender-ref ref="mongoDBAppender" />
+	</appender>
+
 	<logger name="com.yx" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="yxAppender" />
+		<appender-ref ref="asynAppender" />
 		<appender-ref ref="CONSOLE" />
-		<appender-ref ref="dailyFileAppender" />
 	</logger>
 
-	<logger name="org.apache.ibatis">
-	<level value="debug" />
-	<appender-ref ref="ibatisAppender" />
-	</logger>
-
-	<logger name="java.sql">
-	<level value="debug" />
-	<appender-ref ref="ibatisAppender" />
-	</logger>
-
-	<logger name="java.sql.Statement">
-	<level value="debug" />
-	<appender-ref ref="ibatisAppender" />
-	</logger>
-
-	<logger name="java.sql.ResultSet">
-	<level value="debug" />
-	<appender-ref ref="ibatisAppender" />
+	<logger name="com.xyx" additivity="false">
+		<level value="DEBUG" />
+		<appender-ref ref="asynAppender" />
+		<appender-ref ref="CONSOLE" />
 	</logger>
 
 	<root>
 		<level value="INFO" />
 		<appender-ref ref="CONSOLE" />
 		<appender-ref ref="dailyFileAppender" />
-		<appender-ref ref="ibatisAppender" />
+		<appender-ref ref="yxAppender" />
 	</root>
 
 </log4j:configuration>
