@@ -39,7 +39,7 @@
 	<logger name="com.yx" additivity="false">
 		<level value="INFO" />
 		<appender-ref ref="yxAppender" />
-		<appender-ref ref="asynAppender" />
+		<!-- <appender-ref ref="asynAppender" /> -->
 		<appender-ref ref="CONSOLE" />
 	</logger>
 

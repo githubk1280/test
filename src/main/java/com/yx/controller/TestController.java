@@ -34,9 +34,9 @@ public class TestController {
 		// // System.out.println();
 		// logger.info(it.next());
 		// }
-		logger.info("this is a test --------2----");
-		DOMConfigurator.configure(this.getClass().getClassLoader()
-				.getResource("log4j.xml"));
+		// logger.info("this is a test --------2----");
+		// DOMConfigurator.configure(this.getClass().getClassLoader()
+		// .getResource("log4j.xml"));
 	}
 
 	@RequestMapping("/yx/test")
