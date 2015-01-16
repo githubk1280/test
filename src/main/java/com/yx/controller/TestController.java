@@ -5,6 +5,7 @@ import java.util.Properties;
 import javax.annotation.PostConstruct;
 
 import org.apache.log4j.Logger;
+import org.apache.log4j.xml.DOMConfigurator;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -33,10 +34,13 @@ public class TestController {
 		// // System.out.println();
 		// logger.info(it.next());
 		// }
+		logger.info("this is a test --------2----");
+		DOMConfigurator.configure(this.getClass().getClassLoader()
+				.getResource("log4j.xml"));
 	}
 
 	@RequestMapping("/yx/test")
 	public void testConnect() {
-		logger.info("this is a test");
+		logger.info("this is a test ------------");
 	}
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE log4j:configuration PUBLIC "-//log4j/log4j Configuration//EN" "log4j.dtd">
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"
-	threshold="null" debug="null">
+	threshold="null" debug="true">
 	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="[test-console]%d %-5p [%c] %m%n" />
@@ -29,12 +29,10 @@
 		<param name="port" value="27017" />
 		<param name="databaseName" value="test" />
 		<param name="collectionName" value="apolloLog" />
-		<!-- <param name="userName" value="" /> -->
-		<!-- <param name="password" value="" /> -->
 	</appender>
 
 	<appender name="asynAppender" class="org.apache.log4j.AsyncAppender">
-		<param name="bufferSize" value="10000" />
+		<param name="bufferSize" value="10" />
 		<appender-ref ref="mongoDBAppender" />
 	</appender>
 
@@ -45,17 +43,10 @@
 		<appender-ref ref="CONSOLE" />
 	</logger>
 
-	<logger name="com.xyx" additivity="false">
-		<level value="DEBUG" />
-		<appender-ref ref="asynAppender" />
-		<appender-ref ref="CONSOLE" />
-	</logger>
-
 	<root>
 		<level value="INFO" />
 		<appender-ref ref="CONSOLE" />
 		<appender-ref ref="dailyFileAppender" />
-		<appender-ref ref="yxAppender" />
 	</root>
 
 </log4j:configuration>

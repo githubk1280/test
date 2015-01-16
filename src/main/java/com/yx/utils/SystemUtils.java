@@ -4,7 +4,7 @@ import java.io.File;
 
 public class SystemUtils {
 
-	public final static String LOG4JDIR = File.separator + "data"
+	public final static String LOG4JDIR = File.separator + "datas"
 			+ File.separator + "applogs";
 	public final static String LOG4JDIR_WIN = "F:" + LOG4JDIR;
 

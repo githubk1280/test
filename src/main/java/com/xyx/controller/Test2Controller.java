@@ -13,7 +13,7 @@ public class Test2Controller {
 	public void init() {
 		int i = 0;
 		while (i++ < 10) {
-			logger.debug(i);
+			logger.info(i);
 		}
 	}
 }
