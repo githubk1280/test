@@ -24,7 +24,9 @@ public class PicUploadController {
 			throws IllegalStateException, IOException, AuthException,
 			JSONException {
 		PutRet result = QNConfigUtils.uploadFile(file.getInputStream());
-		logger.info(file.getSize()/1024+"KB");
+		logger.info(file.getSize() / 1024 + "KB");
+		System.out.println(file.getSize() / 1024 + "KB");
+		System.out.println(result.getResponse());
 		JsonResponseUtils.returnJsonResponse(response, result.getKey(),
 				result.ok(), result.statusCode);
 	}
