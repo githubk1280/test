@@ -1,5 +1,7 @@
 package com.yx.qiniu;
 
+import java.io.File;
+import java.io.InputStream;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -21,13 +23,14 @@ public class QNConfigUtils {
 
 	public static String upToken = "";
 
-	public static void getUploadKey() throws AuthException, JSONException {
+	public static String getUploadKey() throws AuthException, JSONException {
 		Mac mac = new Mac(ACCESS_KEY, SECRET_KEY);
 		// 请确保该bucket已经存在
 		String bucketName = BUCKET;
 		PutPolicy putPolicy = new PutPolicy(bucketName);
 		upToken = putPolicy.token(mac);
 		System.out.println(upToken);
+		return upToken;
 	}
 
 	public static void uploadFile() throws AuthException, JSONException {
@@ -41,6 +44,29 @@ public class QNConfigUtils {
 		String localFile = path.substring(path.indexOf(":") + 1, path.length());
 		PutRet ret = IoApi.putFile(upToken, key, localFile, extra);
 		System.out.println(ret.getStatusCode() + "--" + ret.getResponse());
+	}
+
+	public static PutRet uploadFile(File f) throws AuthException, JSONException {
+		if (StringUtils.isEmpty(upToken)) {
+			getUploadKey();
+		}
+		PutExtra extra = new PutExtra();
+		String key = "image" + new Random().nextInt();
+		PutRet ret = IoApi.putFile(upToken, key, f, extra);
+		System.out.println(ret.getStatusCode() + "--" + ret.getResponse());
+		return ret;
+	}
+
+	public static PutRet uploadFile(InputStream in) throws AuthException,
+			JSONException {
+		if (StringUtils.isEmpty(upToken)) {
+			getUploadKey();
+		}
+		PutExtra extra = new PutExtra();
+		String key = "image" + new Random().nextInt();
+		PutRet ret = IoApi.Put(upToken, key, in, extra);
+		System.out.println(ret.getStatusCode() + "--" + ret.getResponse());
+		return ret;
 	}
 
 	public static void main(String args[]) throws AuthException, JSONException {

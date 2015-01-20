@@ -10,7 +10,7 @@
 
 	<appender name="dailyFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
 		<!-- <param name="Threshold" value="INFO" /> -->
-		<param name="File" value="${LOG4JDIR}/app.log" />
+		<!-- <param name="File" value="F:/test//app.log" /> -->
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="[test-dailyFileAppender]%d %-5p [%c] %m%n" />
 		</layout>
@@ -18,23 +18,23 @@
 
 	<appender name="yxAppender" class="org.apache.log4j.DailyRollingFileAppender">
 		<!-- <param name="Threshold" value="DEBUG" /> -->
-		<param name="File" value="${LOG4JDIR}/yx.log" />
+		<!-- <param name="File" value="F:/test//yx.log" /> -->
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="[test-yxAppender]%d %-5p [%c] %m%n" />
 		</layout>
 	</appender>
 
-	<appender name="mongoDBAppender" class="org.log4mongo.MongoDbAppender">
-		<param name="hostname" value="115.29.166.179" />
-		<param name="port" value="27017" />
-		<param name="databaseName" value="test" />
-		<param name="collectionName" value="apolloLog" />
-	</appender>
+	<!-- <appender name="mongoDBAppender" class="org.log4mongo.MongoDbAppender"> -->
+	<!-- <param name="hostname" value="115.29.166.179" /> -->
+	<!-- <param name="port" value="27017" /> -->
+	<!-- <param name="databaseName" value="test" /> -->
+	<!-- <param name="collectionName" value="apolloLog" /> -->
+	<!-- </appender> -->
 
-	<appender name="asynAppender" class="org.apache.log4j.AsyncAppender">
-		<param name="bufferSize" value="10" />
-		<appender-ref ref="mongoDBAppender" />
-	</appender>
+	<!-- <appender name="asynAppender" class="org.apache.log4j.AsyncAppender"> -->
+	<!-- <param name="bufferSize" value="10" /> -->
+	<!-- <appender-ref ref="mongoDBAppender" /> -->
+	<!-- </appender> -->
 
 	<logger name="com.yx" additivity="false">
 		<level value="INFO" />
